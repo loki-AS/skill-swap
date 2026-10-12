@@ -1,0 +1,272 @@
+import type { Conversation, User } from '../types'
+
+export const CURRENT_USER_ID = 'me'
+
+/**
+ * Demo community. Tuned against SAMPLE_PROFILE so a reviewer sees every case:
+ * mutual (Liam, Ananya, Rohan, Meera, Priya), one-way (Kabir, Isha, Vikram, Aditya, Harsh) and no overlap (the rest).
+ */
+export const DEMO_USERS: User[] = [
+  {
+    id: 'u-ananya',
+    name: 'Ananya Rao',
+    avatar: '',
+    headline: 'Product designer · Ex-Swiggy',
+    bio: 'I design checkout flows by day and teach Canva to student clubs on weekends. Finally ready to understand what my engineers are actually doing.',
+    location: 'Bengaluru',
+    availability: 'Weekends',
+    teaches: ['Canva', 'Figma', 'UI Design'],
+    learns: ['C Programming', 'Python'],
+  },
+  {
+    id: 'u-rohan',
+    name: 'Rohan Mehta',
+    avatar: '',
+    headline: 'Wedding & street photographer',
+    bio: 'Twelve years behind a camera. I want to build my own portfolio site instead of paying for a template every year.',
+    location: 'Mumbai',
+    availability: 'Weekday evenings',
+    teaches: ['Photography', 'Lightroom'],
+    learns: ['React', 'JavaScript'],
+  },
+  {
+    id: 'u-meera',
+    name: 'Meera Iyer',
+    avatar: '',
+    headline: 'Session guitarist · Carnatic fusion',
+    bio: 'Gigging musician who keeps getting asked to build band websites. Happy to swap chords for components.',
+    location: 'Chennai',
+    availability: 'Flexible',
+    teaches: ['Guitar', 'Music Production'],
+    learns: ['React', 'Public Speaking'],
+  },
+  {
+    id: 'u-liam',
+    name: 'Liam Fernandes',
+    avatar: '',
+    headline: 'Indie musician & freelance designer',
+    bio: 'I make album art in Canva and play guitar in a Goa surf-rock band. Learning to code so I can ship my own music apps.',
+    location: 'Remote',
+    availability: 'Flexible',
+    teaches: ['Guitar', 'Canva'],
+    learns: ['C Programming', 'React', 'Git & GitHub'],
+  },
+  {
+    id: 'u-priya',
+    name: 'Priya Menon',
+    avatar: '',
+    headline: 'Documentary filmmaker',
+    bio: 'I shoot short docs about Bengaluru’s lakes. Want to learn C properly so I can tinker with camera firmware.',
+    location: 'Bengaluru',
+    availability: 'Mornings',
+    teaches: ['Photography', 'Video Editing'],
+    learns: ['C Programming', 'Excel'],
+  },
+  {
+    id: 'u-kabir',
+    name: 'Kabir Singh',
+    avatar: '',
+    headline: 'Final-year CSE · IIIT Delhi',
+    bio: 'Competitive programmer, Python for everything. Need someone to finally explain pointers the way C was meant to be understood.',
+    location: 'Delhi',
+    availability: 'Weekday evenings',
+    teaches: ['Python', 'Data Structures'],
+    learns: ['C Programming'],
+  },
+  {
+    id: 'u-isha',
+    name: 'Isha Kapoor',
+    avatar: '',
+    headline: 'Brand designer · Studio Kaagaz',
+    bio: 'Posters, packaging, pitch decks. Moving to Madrid next year and my Spanish is “hola” and nothing else.',
+    location: 'Pune',
+    availability: 'Weekends',
+    teaches: ['Photoshop', 'Canva', 'Illustrator'],
+    learns: ['Spanish', 'Excel'],
+  },
+  {
+    id: 'u-vikram',
+    name: 'Vikram Joshi',
+    avatar: '',
+    headline: 'YouTube editor · 400k subs channel',
+    bio: 'I cut videos for tech creators and want to understand the code they keep talking about.',
+    location: 'Pune',
+    availability: 'Flexible',
+    teaches: ['Video Editing', 'Premiere Pro'],
+    learns: ['JavaScript', 'C Programming', 'React'],
+  },
+  {
+    id: 'u-aditya',
+    name: 'Aditya Kulkarni',
+    avatar: '',
+    headline: 'Growth marketer · D2C brands',
+    bio: 'Grew three D2C brands from zero. I keep waiting on developers for landing pages — time to learn it myself.',
+    location: 'Mumbai',
+    availability: 'Weekday evenings',
+    teaches: ['SEO', 'Social Media Marketing'],
+    learns: ['TypeScript', 'React'],
+  },
+  {
+    id: 'u-harsh',
+    name: 'Harsh Patel',
+    avatar: '',
+    headline: 'Backend engineer · fintech',
+    bio: 'Java and SQL all week. Want to build a proper frontend for my trekking-photo side project.',
+    location: 'Pune',
+    availability: 'Weekends',
+    teaches: ['Java', 'SQL', 'Git & GitHub'],
+    learns: ['React', 'Lightroom'],
+  },
+  {
+    id: 'u-arjun',
+    name: 'Arjun Nair',
+    avatar: '',
+    headline: 'Debate coach · National finalist',
+    bio: 'Coach for two college debate societies. Learning guitar so I have something to do with my hands that isn’t gesturing.',
+    location: 'Hyderabad',
+    availability: 'Weekday evenings',
+    teaches: ['Public Speaking', 'Debate'],
+    learns: ['Piano', 'Photography'],
+  },
+  {
+    id: 'u-sara',
+    name: 'Sara D’Souza',
+    avatar: '',
+    headline: 'Language tutor · DELE certified',
+    bio: 'I teach Spanish and French to anyone who’ll sit still. I’d love to make better-looking worksheets.',
+    location: 'Bengaluru',
+    availability: 'Mornings',
+    teaches: ['Spanish', 'French'],
+    learns: ['Illustrator', 'Notion'],
+  },
+  {
+    id: 'u-daniel',
+    name: 'Daniel Thomas',
+    avatar: '',
+    headline: 'Copywriter · Remote from Kochi',
+    bio: 'Words for SaaS brands. Planning a year in Tokyo and need Japanese beyond menu-reading.',
+    location: 'Remote',
+    availability: 'Flexible',
+    teaches: ['English Speaking', 'Copywriting', 'Content Strategy'],
+    learns: ['Japanese', 'Notion'],
+  },
+  {
+    id: 'u-nisha',
+    name: 'Nisha Verma',
+    avatar: '',
+    headline: 'Physics PhD scholar · IISER Kolkata',
+    bio: 'I TA undergrad calculus and physics. Piano is my one non-academic ambition.',
+    location: 'Kolkata',
+    availability: 'Weekends',
+    teaches: ['Calculus', 'Physics', 'Statistics'],
+    learns: ['Piano', 'Singing'],
+  },
+  {
+    id: 'u-fatima',
+    name: 'Fatima Sheikh',
+    avatar: '',
+    headline: 'Calligraphy artist · Urdu & Latin scripts',
+    bio: 'Hand-lettering commissions for weddings and cafés. Want to turn my letterforms into digital products.',
+    location: 'Hyderabad',
+    availability: 'Flexible',
+    teaches: ['Calligraphy', 'Drawing', 'Illustrator'],
+    learns: ['Figma', 'UI Design'],
+  },
+  {
+    id: 'u-karthik',
+    name: 'Karthik Reddy',
+    avatar: '',
+    headline: 'Ops analyst · spreadsheet wizard',
+    bio: 'If it can be a pivot table, I’ve made it one. Terrified of presenting it though.',
+    location: 'Chennai',
+    availability: 'Weekday evenings',
+    teaches: ['Excel', 'Google Sheets', 'Notion'],
+    learns: ['Public Speaking', 'Interview Prep'],
+  },
+  {
+    id: 'u-tanvi',
+    name: 'Tanvi Shah',
+    avatar: '',
+    headline: 'Hindustani vocalist · music teacher',
+    bio: 'Teaching piano and voice for eight years. Just moved and want to chat with my neighbours in Kannada.',
+    location: 'Delhi',
+    availability: 'Mornings',
+    teaches: ['Piano', 'Singing'],
+    learns: ['Kannada', 'Hindi'],
+  },
+  {
+    id: 'u-zoya',
+    name: 'Zoya Khan',
+    avatar: '',
+    headline: 'Novelist · JLPT N2',
+    bio: 'Writing my second novel and teaching Japanese on the side. Economics is my secret hobby.',
+    location: 'Bengaluru',
+    availability: 'Weekends',
+    teaches: ['Japanese', 'Creative Writing'],
+    learns: ['Economics', 'Copywriting'],
+  },
+]
+
+/** Quick-fill profile offered during onboarding so reviewers can see matches immediately. */
+export const SAMPLE_PROFILE: Omit<User, 'id' | 'avatar'> = {
+  name: 'Aarav Sharma',
+  headline: 'CS undergrad · RV College',
+  bio: 'Second-year CS student who loves systems programming and building React side projects. Want to get better at visual design and photography.',
+  location: 'Bengaluru',
+  availability: 'Weekday evenings',
+  teaches: ['C Programming', 'React'],
+  learns: ['Canva', 'Photography', 'Guitar'],
+}
+
+interface SeedMessage {
+  from: 'me' | 'them'
+  text: string
+  minutesAgo: number
+}
+
+const SEED_THREADS: { id: string; userId: string; readMinutesAgo: number; messages: SeedMessage[] }[] = [
+  {
+    id: 'conv-ananya',
+    userId: 'u-ananya',
+    readMinutesAgo: 30,
+    messages: [
+      { from: 'me', text: 'Hi Ananya! Saw you want to learn C — I’d love to swap for some Canva help.', minutesAgo: 180 },
+      { from: 'them', text: 'Yes!! I have been putting off pointers for two years now 😅', minutesAgo: 175 },
+      { from: 'them', text: 'Saturday mornings work for me. Cubbon Park café?', minutesAgo: 20 },
+      { from: 'them', text: 'I can bring my laptop with a Canva Pro account so you can try the brand kit features.', minutesAgo: 18 },
+    ],
+  },
+  {
+    id: 'conv-rohan',
+    userId: 'u-rohan',
+    readMinutesAgo: 60 * 20,
+    messages: [
+      { from: 'them', text: 'Hey! Your React projects look great. Want to swap for photography sessions?', minutesAgo: 60 * 26 },
+      { from: 'me', text: 'Absolutely. Could we start with manual mode basics? I only shoot on auto.', minutesAgo: 60 * 25 },
+      { from: 'them', text: 'Perfect starting point. I’ll send a short shot list before our first call.', minutesAgo: 60 * 24 },
+    ],
+  },
+  {
+    id: 'conv-kabir',
+    userId: 'u-kabir',
+    readMinutesAgo: 60 * 50,
+    messages: [{ from: 'them', text: 'Hi! Could you walk me through malloc and free sometime? Happy to help with any Python in return.', minutesAgo: 60 * 6 }],
+  },
+]
+
+export function createSeedConversations(now = Date.now()): Conversation[] {
+  const iso = (minutesAgo: number) => new Date(now - minutesAgo * 60_000).toISOString()
+  return SEED_THREADS.map((thread) => ({
+    id: thread.id,
+    participantIds: [CURRENT_USER_ID, thread.userId],
+    createdAt: iso(Math.max(...thread.messages.map((m) => m.minutesAgo)) + 1),
+    lastReadAt: iso(thread.readMinutesAgo),
+    messages: thread.messages.map((m, i) => ({
+      id: `${thread.id}-m${i}`,
+      conversationId: thread.id,
+      senderId: m.from === 'me' ? CURRENT_USER_ID : thread.userId,
+      text: m.text,
+      createdAt: iso(m.minutesAgo),
+    })),
+  }))
+}

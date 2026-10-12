@@ -1,0 +1,110 @@
+/*
+ * Skill Swap design tokens.
+ * Identity: two directions meeting. Coral = what you teach, teal = what you learn,
+ * and the swap gradient (coral → violet → teal) marks a mutual match.
+ * light-dark() lets one declaration serve both themes; data-theme sets color-scheme.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* Surfaces */
+  --bg: light-dark(#f7f5f0, #11111d);
+  --bg-tint: light-dark(#efeae0, #171728);
+  --surface: light-dark(#ffffff, #1b1b2c);
+  --surface-2: light-dark(#f3f0ea, #232338);
+  --surface-raised: light-dark(#ffffff, #26263d);
+  --border: light-dark(#e5e0d5, #34344f);
+  --border-strong: light-dark(#cfc8ba, #4a4a6a);
+
+  /* Text hierarchy */
+  --text: light-dark(#1b1a2e, #f2f1f8);
+  --text-2: light-dark(#4f4e66, #c3c2d6);
+  --text-3: light-dark(#6a6880, #9c9bb4);
+  --text-inverse: light-dark(#ffffff, #11111d);
+
+  /* Brand */
+  --primary: light-dark(#231f5c, #a59cff);
+  --primary-hover: light-dark(#332d80, #bdb6ff);
+  --on-primary: light-dark(#ffffff, #14132b);
+  --focus: light-dark(#6d5dfc, #a59cff);
+
+  /* Teach (you give) */
+  --teach: light-dark(#ea5a32, #ff7f5c);
+  --teach-ink: light-dark(#b23d1a, #ff9a7d);
+  --teach-soft: light-dark(#fdece5, rgb(255 127 92 / 0.14));
+  --teach-line: light-dark(#f6c3b2, rgb(255 127 92 / 0.35));
+
+  /* Learn (you get) */
+  --learn: light-dark(#0f9483, #2fc8b3);
+  --learn-ink: light-dark(#0a6b5f, #5edccb);
+  --learn-soft: light-dark(#e0f4f0, rgb(47 200 179 / 0.14));
+  --learn-line: light-dark(#a9ddd4, rgb(47 200 179 / 0.35));
+
+  /* Mutual match */
+  --mutual: light-dark(#6a4ff0, #a48dff);
+  --mutual-soft: light-dark(#efebff, rgb(164 141 255 / 0.14));
+  --swap-gradient: linear-gradient(115deg, var(--teach) 0%, var(--mutual) 52%, var(--learn) 100%);
+
+  /* Status */
+  --success: light-dark(#167c43, #4ade80);
+  --success-soft: light-dark(#e3f5ea, rgb(74 222 128 / 0.14));
+  --warning: light-dark(#a75a07, #fbbf24);
+  --warning-soft: light-dark(#fdf1dc, rgb(251 191 36 / 0.14));
+  --error: light-dark(#c0342a, #ff7b72);
+  --error-soft: light-dark(#fde8e6, rgb(255 123 114 / 0.14));
+  --info: light-dark(#2457d6, #7aa2ff);
+  --info-soft: light-dark(#e6edfd, rgb(122 162 255 / 0.14));
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Figtree', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --fs-display-xl: clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
+  --fs-display: clamp(1.7rem, 1.25rem + 1.6vw, 2.4rem);
+  --fs-heading: 1.3rem;
+  --fs-heading-sm: 1.05rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.78rem;
+  --fs-label: 0.72rem;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+
+  /* Shape & depth */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px light-dark(rgb(27 26 46 / 0.06), rgb(0 0 0 / 0.4));
+  --shadow-md: 0 1px 2px light-dark(rgb(27 26 46 / 0.05), rgb(0 0 0 / 0.3)),
+    0 6px 20px -6px light-dark(rgb(27 26 46 / 0.12), rgb(0 0 0 / 0.5));
+  --shadow-lg: 0 2px 4px light-dark(rgb(27 26 46 / 0.04), rgb(0 0 0 / 0.3)),
+    0 18px 40px -12px light-dark(rgb(35 31 92 / 0.22), rgb(0 0 0 / 0.6));
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 360ms;
+
+  /* Layout */
+  --sidebar-w: 268px;
+  --content-max: 1240px;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}

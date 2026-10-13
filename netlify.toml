@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback: React Router handles every path client-side, so serve index.html
+# for any URL that isn't a real file (fixes 404s on refresh / direct links like /matches).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

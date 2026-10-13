@@ -40,6 +40,8 @@ npm run build      # tsc -b && vite build
 
 **Definition of done for any change:** `typecheck`, `lint` (0 warnings), `test` and `build` all pass. For UI changes, also check the page in a browser at desktop, tablet (~800px) and phone (~390px) widths in **both light and dark** theme.
 
+**Deploy (Netlify):** `netlify.toml` builds with `npm run build`, publishes `dist`, and has a `/* → /index.html 200` rewrite so client-side routes such as `/matches` don't 404 on refresh. Any other static host needs the same SPA fallback.
+
 Fonts (Bricolage Grotesque for display, Figtree for body) load from Google Fonts in `index.html`, with system-font fallbacks. There are no other external network calls.
 
 ---
